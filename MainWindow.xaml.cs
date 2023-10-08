@@ -52,11 +52,15 @@ namespace TravelManagementApp
             datagridTypeOfAccomodation.Items.Refresh();
 
             List<TypeOfAccomodation> typeOfAccomodation = new List<TypeOfAccomodation>();
-            typeOfAccomodation.Add(new TypeOfAccomodation() { Id = 1, Type = "Apartment", CompanyName = "Booking", Name = "Apartment XYZ" });
-            typeOfAccomodation.Add(new TypeOfAccomodation() { Id = 2, Type = "Apartment", CompanyName = "Novasol", Name = "123 Apartment" });
-            typeOfAccomodation.Add(new TypeOfAccomodation() { Id = 3, Type = "Apartment", CompanyName = "Airbnb", Name = "Another Apartment" });
-            typeOfAccomodation.Add(new TypeOfAccomodation() { Id = 4, Type = "Hotel", CompanyName = "Booking", Name = "Hotel dos Tantas" });
-            typeOfAccomodation.Add(new TypeOfAccomodation() { Id = 5, Type = "Hotel", CompanyName = "Booking", Name = "Hotel Meia Boca" });
+
+            datagridTypeOfAccomodation.ItemsSource = new ObservableCollection<TypeOfAccomodation>
+            {
+                new TypeOfAccomodation() { Id = 1, Type = "Apartment", CompanyName = "Booking", Name = "Apartment XYZ" },
+                new TypeOfAccomodation() { Id = 2, Type = "Apartment", CompanyName = "Novasol", Name = "123 Apartment" },
+                new TypeOfAccomodation() { Id = 3, Type = "Apartment", CompanyName = "Airbnb", Name = "Another Apartment" },
+                new TypeOfAccomodation() { Id = 4, Type = "Hotel", CompanyName = "Booking", Name = "Hotel dos Tantas" },
+                new TypeOfAccomodation() { Id = 5, Type = "Hotel", CompanyName = "Booking", Name = "Hotel Meia Boca" },
+            };
 
             datagridTypeOfAccomodation.ItemsSource = typeOfAccomodation;
         }
@@ -65,6 +69,7 @@ namespace TravelManagementApp
         {
             var destination = datagridDestination.SelectedItem as Destination;
             var typeOfAccomodation = datagridTypeOfAccomodation.SelectedItem as TypeOfAccomodation;
+
 
             MessageBox.Show(destination.Id + " / " + destination.Country + " / " + destination.City + " / " + destination.Visited);
             MessageBox.Show(typeOfAccomodation.Id + " / " + typeOfAccomodation.Type + " / " + typeOfAccomodation.CompanyName + " / " + typeOfAccomodation.Name);
